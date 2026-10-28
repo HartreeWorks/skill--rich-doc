@@ -105,7 +105,24 @@ python3 -I <skill>/scripts/visual.py svg <in.svg> [--scale 2]   # writes <in>.pn
 
 For a diagram, start from `assets/diagram-template.svg` in this skill: its comments give the palette, box kinds and arrow markers. Embed the SVG itself; Roughdraft renders it. An SVG shown as an image loads no web fonts and ignores dark mode, so keep the template's system-font stack and its own background rectangle. Use `visual.py svg` only to get a PNG you can look at: hand-written SVG takes one look and usually one fix (labels colliding with curves are the common fault).
 
-Use the template's palette, or swap in your organisation's colours and keep the roles. The same hex values work in Mermaid `classDef` lines.
+## Brands
+
+A doc uses a project's brand only when it belongs to that project; otherwise it uses the default palette, a calm off-white, charcoal and slate-blue set. `scripts/brand.py` (run with `python3 -I`) decides which applies and does the recolouring:
+
+```bash
+python3 -I <skill>/scripts/brand.py resolve <doc path>                 # which brand, and why
+python3 -I <skill>/scripts/brand.py mermaid <doc path>                 # init line and classDef lines
+python3 -I <skill>/scripts/brand.py svg <doc path> <in.svg> <out.svg>  # recolour a default-palette SVG
+```
+
+- **Which brand applies.** The nearest `.rich-doc/brand.json` in the doc's folder or any folder above it. Failing that, a brand registered for a folder containing the doc (`brand.py register <brand.json> <folder>...`; `brand.py list` shows them), which covers projects whose docs live outside the folder that holds the brand file. Otherwise the default.
+- **Using it.**
+  - Run `resolve` once per doc and follow the brand's `notes`, such as where accent colours may go.
+  - Start each Mermaid fence with the `mermaid` output's init line, and use its class names: `new`, `changed`, `gap`, `key`, `result`, `muted` and `plain`. Paste the `classDef` lines you use at the end of the fence.
+  - Draw SVG in the template's default colours, then run `svg` to recolour it. Never hand-pick hex values.
+- **Defining a brand.** Write `.rich-doc/brand.json` at the project's root. Give it a `name`, a `palette` setting any of the roles `background`, `ink`, `muted`, `border`, `accent`, `accent_soft`, `gap_fill` and `gap_ink` (unset roles keep the default), an optional SVG `font` stack and `notes` on usage. Take the values from the organisation's own brand guidelines, not from memory, and check that `accent` on `background` stays legible for small text, naming a darker shade in `notes` if it doesn't.
+
+
 
 ## Interactive parts
 

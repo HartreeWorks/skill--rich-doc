@@ -10,6 +10,7 @@ The skill's diagram template. Every box kind means one thing (exists, the main s
 - **Briefings** on a person, organisation, project or decision: a decision box (decision · recommendation · why), one whole-picture diagram, the evidence, and any draft message ready to send.
 - **Primers** on a topic or tool: the key points first, one diagram of how it fits together, then the detail and where to read next.
 - **Plans** for your review: a TL;DR, the decisions you need to make, and a before-and-after diagram of what the plan changes, plus a sequence diagram when the order of steps matters.
+- **Your brand, only where it belongs.** Give a project a `.rich-doc/brand.json` (palette roles, font, usage notes) and docs for that project use it. Everything else gets a calm default palette. A small script picks the brand for each doc and recolours Mermaid and SVG diagrams to match.
 
 Diagrams are Mermaid by default, so they stay editable text, with hand-written SVG for the one picture whose layout carries the argument. Screenshots are used where a source's look is the evidence, and at most one live widget where the doc ends in an action.
 

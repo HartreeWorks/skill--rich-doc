@@ -2,8 +2,9 @@
   <!--
     Diagram template for rich docs. Copy, then replace the example boxes.
 
-    Palettes (swap the hex values; keep the roles):
-      role          neutral
+    Default palette. Draw in these values; scripts/brand.py svg swaps them for
+    the brand in force, role by role:
+      role          default
       background    #fafaf8
       ink           #24221f
       muted text    #6b6762
