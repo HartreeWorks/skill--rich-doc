@@ -47,6 +47,8 @@ current.
 
 4. **Make the images** (see "Images"). Done when every image is rendered, looked at once, and any overlap or clipping fixed in one pass.
 
+   **Check the diagrams:** `node <skill>/scripts/check-diagrams.mjs <doc.md>` parses every Mermaid fence. Fix any that fail: a diagram that won't draw shows as raw code or an error. If it reports "Skipped", say in the reply that the diagrams are unchecked.
+
 5. **Open it** in the reader's review tool (for example, `roughdraft open <absolute path>`). In the reply, give the path, the decisions or key points in brief, and anything unverified.
 
 The doc is done when every decision has a recommendation and a reason, every claim keeps its link, and every image has been looked at.
